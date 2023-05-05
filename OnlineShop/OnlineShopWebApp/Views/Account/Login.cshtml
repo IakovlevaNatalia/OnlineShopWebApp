@@ -1,0 +1,31 @@
+﻿@model UserCredentials
+
+<form asp-action="Login" asp-controller="Account" method="post">
+	<div>
+		<div class="validation" asp-validation-summary="All"></div>
+
+		<h3>Вход</h3>
+		<input type="hidden" asp-for="ReturnUrl" name="returnUrl"/>
+		
+		<div>
+			<label asp-for="Login">LOGIN</label><br />
+			<input asp-for="Login" />
+			<span asp-validation-for="Login"></span>
+        </div>
+
+		<div>
+			<label asp-for="Password">PASSWORD</label><br />
+			<input asp-for="Password" />
+			<span asp-validation-for="Password"></span>
+        </div>
+
+		<label><input type="checkbox" value="true" name="RememberMe"/>REMEMBER ME</label><br>
+
+		<input type="submit" value="LOG IN" class ="btn btn-outline-success" role="button" asp-controller="Account" asp-action="Login"></div>
+
+	<div><br>
+		<a asp-area= "" asp-controller="Registration" asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">I AM A NEW USER</a>
+	</div>
+	
+
+</form>

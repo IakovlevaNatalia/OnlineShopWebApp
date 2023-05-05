@@ -1,0 +1,47 @@
+﻿@using OnlineShop.db
+@using OnlineShop.db.Models
+@model OrderViewModel
+<form method="post">
+<div class="row">
+	<div class="col-6">
+		<table class="table">
+			<tr>
+				<td>DATE and TIME</td>
+				<td>@Model.CreateDateTime.ToString("g")</td>
+			</tr>
+			<tr>
+				<td>ADDRESS</td>
+				<td>@Model.User.Address</td>
+			</tr>
+			<tr>
+				<td>CUSTOMER NAME</td>
+				<td>@Model.User.FirstName &nbsp; @Model.User.LastName</td>
+			</tr>
+			<tr>
+				<td>PHONE</td>
+				<td>@Model.User.Phone</td>
+			</tr>
+			<tr>
+				<td>COST</td>
+				<td>@Model.Cost</td>
+			</tr>
+			<tr>
+			<td>ORDER STATUS</td>
+			<td>
+				<select asp-for="@Model.Status"
+				 asp-items="@Html.GetEnumSelectList<OrderStatus>()"
+			     class="form-control">
+				 </select>
+			</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+	<br />
+	<button class="btn btn-outline-success" type="submit"
+	asp-area="Admin"
+	asp-controller="Order"
+	asp-action="UpdateOrderStatus"
+	asp-route-orderId="@Model.Id">UPDATE ORDER STATUS</button>
+
+</form>

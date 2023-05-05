@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProductViewModel>
+<div class="row">
+	@await Html.PartialAsync("AdminMenu")
+	<div class="col-9">
+		<h2>ITEM LIST</h2>
+
+		<div class="row text-center">
+		<div class="col-3">
+		<a asp-area="Admin"
+		asp-controller="Product"
+		asp-action="Add"
+		class="btn btn-outline-success" role="button">ADD NEW ITEM</a>
+
+		<table class ="table">
+
+			<tr>
+				<th>ITEM NAME</th>
+				<th>PRICE</th>
+			</tr>
+
+			@foreach(var item in Model)
+			{
+				string modalId = "exampleModal" + item.Id;
+				string headerId = "removeModalLabel" + item.Id;
+				<tr>
+					
+					<td><a href="/product/index/@item.Id">@item.Name</a></td>
+					<td>@item.Cost</td>
+					<td><a 
+						asp-area="Admin"
+						asp-controller="Product"
+						asp-action="Edit"
+						asp-route-productId="@item.Id">EDIT</a></td>
+					<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@modalId">REMOVE</button>
+						
+						<div class="modal fade" id="@modalId" tabindex="-1" aria-labelledby="@headerId" aria-hidden="true">
+						  <div class="modal-dialog">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<h5 class="modal-title" id="@modalId">REMOVE ITEM</h5>
+								<button type="button" class="btn-close" data-dismiss="modal" aria-label="CLOSE"></button>
+							  </div>
+							  <div class="modal-body">
+								ARE YOU SURE YOU WANT TO REMOVE AN ITEM?
+							  </div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+								<a class="btn btn-primary"
+												asp-area="Admin"
+												asp-controller="Product"
+												asp-action="Remove"
+												asp-route-productId="@item.Id">SAVE CHANGE</a>
+							  </div>
+							</div>
+						  </div>
+						</div>	
+					</td> 							
+				</tr>
+			}
+		</table>
+		</div>
+		</div>
+		</div>
+	</div>
+
+
+
+
+
+

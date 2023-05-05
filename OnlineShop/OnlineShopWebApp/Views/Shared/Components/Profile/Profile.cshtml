@@ -1,0 +1,12 @@
+﻿@model string
+@if (string.IsNullOrEmpty(@Model))
+{
+	@*<li class="nav-item">*@
+		<a class="btn btn-outline-success"> <span class="bi bi-person-square"></span></a>
+	@*</li>*@
+
+}
+else
+{
+	<img src="@Model" width="50" height="50" alt="image" class="rounded-circle"/>
+}

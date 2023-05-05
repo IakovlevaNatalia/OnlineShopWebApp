@@ -1,0 +1,19 @@
+﻿@model UserViewModel
+<form method ="post">
+	<fieldset>
+		<legend> 
+			USER DETAILS 
+		</legend>
+		<label for="user-name">Your First Name</label>
+		<input id="user-name" type="text" placeholder="For example, Natalia" autofocus><br>
+		<label for="user-name">Your Last Name</label>
+		<input id="user-name" type="text"  name="name" placeholder="For example, Smith"><br>
+		<label for="#">Your phone</label>
+		<input type="text" name="phone" placeholder="+79031234567"><br>
+		<label for="#">Your email</label><br>
+		<input type="text" name="email" placeholder="mail@mail.ru"><br>
+		<label for="adress">Your address</label>
+		<input type="text" name="address" /> <br>
+		<input type="submit" value="CONFIRM" a class ="btn btn-outline-success" role="button" href="/ordercomplete/index" asp-controller="Order" asp-action="Buy">
+	</fieldset>
+</form>

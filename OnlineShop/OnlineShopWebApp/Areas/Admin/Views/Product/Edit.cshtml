@@ -1,0 +1,62 @@
+﻿@model EditProductViewModel
+
+<form method="post" enctype="multipart/form-data">
+	<div class="row">
+		@await Html.PartialAsync("AdminMenu")
+
+
+		<div class="col-9">
+			<h3>EDIT INFORMATION ABOUT ITEM</h3>
+
+			<div class="validation" asp-validation-summary="All"></div>
+
+			<input type="hidden" name="Id" value="@Model?.Id"/>
+			<div class="row">
+				<div class="col-6">
+					<label asp-for="Name"> </label><br />
+					<input class="form-control" asp-for="Name" value="@Model?.Name"/>
+					<span asp-validation-for="Name"/>
+				</div>
+			</div>
+			<input type="hidden" name="Id" value="@Model?.Id"/>
+			<div class="row">
+				<div class="col-6">
+					<label asp-for="Description"> </label><br />
+					<input class="form-control" asp-for="Description" value="@Model?.Description"/>
+					<span asp-validation-for="Description"/>
+				</div>
+			</div>
+			
+			<input type="hidden" name="Id" value="@Model?.Id"/>
+			<div class="row">
+				<div class="col-6">
+					<label asp-for="Cost"> </label><br />
+					<input class="form-control" asp-for="Cost" value="@Model?.Cost"/>
+					<span asp-validation-for="Cost"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-6">
+					<input type="hidden" asp-for="@Model.ImagesPaths" value="@Model.ImagesPaths"/>
+					<label>IMAGE</label><br/>
+
+					@foreach (var ImagePath in Model.ImagesPaths)
+					{
+						<div style="padding: 4px">
+							<img src="@ImagePath" width="150" height="150"/>
+						</div>
+					}
+				</div>
+			</div>
+	
+			<div class="form-group">
+				<label>UPLOAD NEW IMAGE</label>
+				<input type="file" multiple accept="image/*" class="form-control" name="UploadFiles"/> 
+			</div>
+			<div>
+				<button type="submit" class="btn-outline-success" asp-area="Admin" asp-controller="Product" asp-action="Edit">UPDATE</button>
+			</div>
+		</div>
+	</div>
+</form>

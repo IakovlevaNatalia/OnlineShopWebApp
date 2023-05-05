@@ -1,0 +1,36 @@
+﻿@model UserViewModel
+
+<h3>DELIVERY INFORMATION</h3>
+
+<form asp-action="Create" asp-controller="CustomerProfile">
+	<div>
+
+	<div class="validation" asp-validation-summary="All" ></div>
+	<div>
+		<label asp-for="FirstName">FIRST NAME</label><br />
+		<input asp-for="FirstName" />
+		<span asp-validation-for="FirstName"></span>
+	</div>
+
+		<div>
+		<label asp-for="LastName">LAST NAME</label><br />
+		<input asp-for="LastName" />
+		<span asp-validation-for="LastName"></span>
+	</div>
+
+	<div>
+		<label asp-for="Phone">PHONE</label><br />
+		<input asp-for="Phone" />
+		<span asp-validation-for="Phone"></span>
+	</div>
+
+		<div>
+		<label asp-for="Address">ADDRESS</label><br />
+		<input asp-for="Address" />
+		<span asp-validation-for="Address"></span>
+	</div>
+
+	<input type="submit" value="CONFIRM" a class ="btn btn-outline-success" role="button">
+</div>
+</form>			
+				

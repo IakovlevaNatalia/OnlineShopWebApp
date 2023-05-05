@@ -1,0 +1,47 @@
+﻿@model AddProductViewModel
+<form method="post" enctype="multipart/form-data">
+<div class="row">
+	@await Html.PartialAsync("AdminMenu")
+
+	<div class="col-9">
+		<h3>ADD ITEM</h3>
+	</div>
+</div>
+	<div class="validation" asp-validation-summary="All"></div>
+
+	<div class="row text-center">
+		<div class="col-3">
+			<div><br>
+				<label asp-for="Name">ITEM NAME</label><br />
+				<input class="form-control" asp-for="Name" />
+				<span asp-validation-for="Name" />
+			</div>
+
+			<div><br>
+				<label asp-for="Cost">COST</label><br />
+				<input class="form-control" asp-for="Cost" />
+				<span asp-validation-for="Cost" />
+			</div>
+
+			<div><br>
+				<label asp-for="Description">DESCRIPTION</label><br />
+				<input class="form-control" asp-for="Description" />
+				<span asp-validation-for="Description" />
+			</div>
+	
+			<div class="row">
+				<div class="col-6">
+					<label asp-for="UploadFiles">UPLOAD IMAGE</label>
+					<input type="file" multiple accept="image/*" class="form-control" name="UploadFiles"/> 
+					<span asp-validation-for="UploadFiles"></span>
+				</div>
+			</div>
+
+				<div>
+					<button type="submit" asp-area="Admin" asp-controller="Product" class ="btn btn-outline-success" asp-action="Add">CREATE</button>
+			</div>
+		</div>
+		</div>
+
+		</form>
+			

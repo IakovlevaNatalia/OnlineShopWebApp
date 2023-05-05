@@ -1,0 +1,17 @@
+﻿@model RoleViewModel
+<form method="post">
+	<div>
+		<h3>CREATE NEW ROLE</h3>
+
+		<div class="text-danger font-weight-bold" asp-validation-summary="All"></div>
+
+		<div class="row">
+			<div class="col-6">
+				<label asp-for="Name"></label><br />
+				<input class="form-control" asp-for="Name" />
+				<span asp-validation-for="Name" />
+			</div>
+		</div>
+		<button type="submit" class ="btn btn-outline-success" asp-area="Admin" asp-controller="Role" asp-action="Add">CREATE</button>
+	</div>
+</form>

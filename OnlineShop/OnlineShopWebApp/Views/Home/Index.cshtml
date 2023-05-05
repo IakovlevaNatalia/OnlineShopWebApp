@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+@*Список*@
+<div class="row">
+<div class="col-lg-3">
+    <h2 class="my-4">TravelShop</h2>
+
+<ul class="list-group my-4">
+  <li class="list-group-item">Countries</li>
+  <li class="list-group-item">Tours</li>
+  <li class="list-group-item">Visas</li>
+  <li class="list-group-item">Our team</li>
+  <li class="list-group-item">Contacts</li>
+</ul>
+</div>
+@*
+<div class = "row">*@
+    @foreach(var product in Model)
+    {
+        <div class="col-3 card shadow">
+            <img class="card-img-top my-4" src=@product.ImagePath alt="ITEM IMAGE" width="200" height="180"/>
+
+            <div class= "card-body">
+                <a style="color:black"
+                    asp-area=""
+                    asp-controller="Product"
+                    asp-action="Index"
+                    asp-route-id="@product.Id">
+                    <h5>@product.Name</h5>    
+                </a>
+                <h5>$@product.Cost @*&#8381*@ </h5>
+                <div class="card-body d-flex align-items-end justify-content-center">
+                <a class="btn btn-outline-success" 
+                    asp-area=""
+                    asp-controller="Cart"
+                    asp-action="Add"
+                    asp-route-productId="@product.Id"
+                    role = "button">Add to cart</a>
+                 <a class="btn btn-outline-success"
+                 asp-area=""
+                 asp-controller="Favorite"
+                 asp-action="Add"
+                 asp-route-productId="@product.Id"
+                 role="button">Add to favorites</a>
+            </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+

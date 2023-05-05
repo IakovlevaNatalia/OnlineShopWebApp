@@ -1,0 +1,112 @@
+﻿@model CartViewModel
+
+@if (Model == null || Model.Items.Count == 0)
+{
+	<h3>EMPTY CART</h3>
+}
+else
+{
+<div class="row">
+	<div class="col">
+		<table class ="table">
+			<thead>
+				<tr>
+				    <th>ITEM NAME</th>
+	                <th>PRICE IN $</th>
+					<th>AMMOUNT</th>
+	                <th>COST IN $</th>
+					<th>ADD ITEM</th>
+					<th>REMOVE ITEM</th>
+					</tr>
+			</thead>
+			<tbody>
+			@foreach(var item in Model.Items)
+			{
+				<tr>
+					<td>@item.Product.Name</td>
+					<td>@item.Product.Cost</td>
+					<td>@item.Amount</td>
+					<td>@item.Cost</td>
+					<td><a class ="btn btn-outline-success" href="/cart/add?productId=@item.Product.Id" role="button">+</a></td>
+					<td><a class ="btn btn-outline-success" href="/cart/removeProduct?productId=@item.Product.Id" role="button">-</a></td>
+			    </tr>
+			}
+		</tbody>
+		</table>
+		<div class="text-right">
+	<h3>Total</h3>
+	<h3>$@Model.Cost</h3>
+</div>
+<div class ="text-center">
+	<a class ="btn btn-outline-success" href="/home/index" role="button">CONTINUE SHOPPING</a>
+	<a class ="btn btn-outline-success" href="/customerprofile" role="button">CHECKOUT</a>
+	<a class="btn btn-outline-danger" href="/cart/removeAll" role="button">CLEAR CART</a>
+		</div>
+	</div>
+</div>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<!--@model (List<Product> items, int sum)
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+ <a href = "/">
+    <h5>Продолжить покупки</h5>
+ </a>
+ @Model.sum
+<div class = "row">
+	 <table>
+		 	<style>
+		table, th, td {
+			border:1px solid black;
+		}
+		table {border-collapse: collapse; width: 50%;}
+	</style> 
+		    <caption>Корзина заказов</caption>
+	<thead>
+	<tr>
+	<th>Название позиции</th>
+	<th>Количество товара в позиции</th>
+	<th>Стоимость позиции</th>
+	</tr>
+</thead>
+    @foreach(var product in Model.items)
+    {
+<tbody>
+	<tr>
+	<td>@product.Name</td>
+	<td>1</td>
+	<td>@product.Cost</td>
+</tr>
+</tbody>
+     <!--<partial name = "Product", model = "product"/>-->
+    }
+</table>
+
+    </div>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> -->*@
