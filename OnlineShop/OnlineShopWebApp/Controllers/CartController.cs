@@ -13,7 +13,7 @@ namespace OnlineShopWebApp.Controllers
         private readonly IProductDataSource productDataSource;
 
         private readonly ICartRepository cartRepository;
-   
+
         public CartController(ICartRepository cartRepository, IProductDataSource productDataSource)
         {
             this.cartRepository = cartRepository;
@@ -22,7 +22,6 @@ namespace OnlineShopWebApp.Controllers
         public IActionResult Index()
         {
             var user = User.Identity.Name;
-            //var viewModelDict = cartRepository.CartItems.ToDictionary(k => Mapping.ToProductViewModel(k.Key), v=>v.Value);
             return View(Mapping.ToCartViewModel(cartRepository.TryGetByUserId(User.Identity.Name)));
         }
 

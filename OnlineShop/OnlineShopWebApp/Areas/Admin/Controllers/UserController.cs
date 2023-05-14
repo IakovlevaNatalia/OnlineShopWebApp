@@ -28,12 +28,12 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var users = userManager.Users.ToList();
-            return View(users.Select(u => u.ToUserViewModel()).ToList());
+            return View(users.Select(u => u.ToUserAdminViewModel()).ToList());
         }
         public IActionResult Detail(string name)
         {
             var user = userManager.FindByNameAsync(name).Result;
-            return View(user.ToUserViewModel());
+            return View(user.ToUserAdminViewModel());
         }
         public IActionResult ChangePassword(string id)
         {
@@ -76,19 +76,22 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
         public IActionResult Edit(string name)
         {
             var user = userManager.FindByNameAsync(name).Result;
-            return View(user.ToUserViewModel());
+            return View(user.ToUserAdminViewModel());
         }
 
         [HttpPost]
-        public IActionResult Edit(UserViewModel userAccount)
+        public IActionResult Edit(UserAdminViewModel userAccount)
         {
             if (ModelState.IsValid)
             {
                 var user = userManager.FindByNameAsync(userAccount.FirstName).Result;
 
                 user.UserName = userAccount.FirstName;
-                user.PhoneNumber = userAccount.Phone;
+                user.LastName = userAccount.LastName;
                 user.Email = userAccount.Email;
+                user.Address = userAccount.Address;
+                user.PhoneNumber = userAccount.Phone;
+
 
                 userManager.UpdateAsync(user).Wait();
                 return RedirectToAction("Index");

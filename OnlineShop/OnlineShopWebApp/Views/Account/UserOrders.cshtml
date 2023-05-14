@@ -1,4 +1,4 @@
-﻿@model List<OrderViewModel>
+﻿@model IEnumerable<OrderViewModel>
 
 <div class="row justify-content-center">
 	<div class="card shadow my-2 col-lg-10">
@@ -18,11 +18,11 @@
 					{
 						<tr>
 							<td>@order.Id</td>
-							<td>@order.Cost ₽</td>
+							<td>$@order.Cost</td>
 							<td>@order.Status</td>
 							<td>@order.CreateDateTime.ToString("d")</td>
 							<td>@order.CreateDateTime.ToString("t")</td>
-							<td><a asp-controller="Order" asp-action="jj" asp-route-orderId="@order.Id" class="btn btn-info">DETAILS</a></td>
+							<td><a asp-controller="Account" asp-action="UserOrderDetails" asp-route-orderId="@order.Id" class="btn btn-info">DETAILS</a></td>
 						</tr>
 					}
 				</table>

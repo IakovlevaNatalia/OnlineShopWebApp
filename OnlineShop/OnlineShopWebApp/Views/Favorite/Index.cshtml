@@ -15,13 +15,13 @@
 					<h5>@product.Name</h5>
 				</a>
 				<h5>@product.Cost</h5>
-					<a class="btn btn-outline-success"
+					<a class="btn btn-outline-success btn-lg btn-block"
 					asp-area=""
 					asp-controller="Cart"
 					asp-action="Add"
 					asp-route-productid="@product.Id"
-					role="button">ADD TO CART</a>
-				<a class="btn btn-danger"
+				    role="button">ADD TO CART</a>
+				<a class="btn btn-danger btn-lg btn-block"
 				   asp-area=""
 					asp-controller="Favorite"
 					asp-action="Remove"

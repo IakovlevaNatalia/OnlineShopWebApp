@@ -1,10 +1,10 @@
-﻿@model List<UserViewModel>
+﻿@model List<UserAdminViewModel>
 <div class="row">
 	@await Html.PartialAsync("AdminMenu")
 
 <div class="col-9">
 		<div class="row">
-		<h3>Список пользователей</h3>
+		<h3>LIST OF USERS</h3>
 		</div>
 
 		<div class="row">
@@ -13,9 +13,9 @@
 
 		<tr>
 			<th>№</th>
-	        <th>Имя</th>
-			<th>Телефон</th>
-			<th>Логин</th>
+	        <th>NAME</th>
+			<th>PHONE</th>
+			<th>LOGIN</th>
 	    </tr>
 		</thead>
 		<tbody>
@@ -30,7 +30,7 @@
 						asp-area="Admin"
 						asp-controller="User"
 						asp-action="Detail"
-						asp-route-name="@Model[i].FirstName">Подробнее</a></td>
+						asp-route-name="@Model[i].FirstName">DETAILS</a></td>
 				</tr>
 			}
 			</tbody>

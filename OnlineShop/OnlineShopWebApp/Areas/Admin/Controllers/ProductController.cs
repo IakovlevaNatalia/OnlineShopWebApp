@@ -41,7 +41,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
                 return View(product);
             }
 
-            var imagesPath = imagesProvider.SafeFiles(product.UploadFiles, ImageFolders.Products);
+            var imagesPath = imagesProvider.SaveFiles(product.UploadFiles, ImageFolders.Products);
             productDataSource.AddProduct(product.ToProduct(imagesPath));
             return RedirectToAction(nameof(Index));
         }
@@ -66,8 +66,12 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
                 return View(product);
             }
 
-            var addedImagesPath = imagesProvider.SafeFiles(product.UploadFiles, ImageFolders.Products);
-            product.ImagesPaths = addedImagesPath;
+            if (product.UploadFiles != null)
+            {
+                var addedImagesPath = imagesProvider.SaveFiles(product.UploadFiles, ImageFolders.Products);
+                product.ImagesPaths = addedImagesPath;
+            }
+            
             productDataSource.Update(product.ToProduct());
             return RedirectToAction(nameof(Index));
         }

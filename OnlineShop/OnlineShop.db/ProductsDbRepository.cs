@@ -19,7 +19,7 @@ namespace OnlineShop.db
         }
         public Product GetProductById(int id)
         {
-            return databaseContext.Products.FirstOrDefault(p => p.Id == id);
+            return databaseContext.Products.Include(p => p.Images).FirstOrDefault(p => p.Id == id);
         }
 
         public void AddProduct(Product product)

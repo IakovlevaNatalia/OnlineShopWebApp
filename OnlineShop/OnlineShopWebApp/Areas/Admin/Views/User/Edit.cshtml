@@ -1,31 +1,70 @@
-﻿@model UserViewModel
+﻿@using OnlineShopWebApp.Views
+@model OnlineShopWebApp.Areas.Admin.Models.UserAdminViewModel
 
 <form method="post" asp-action="Edit">
-<div class="row">
-	@await Html.PartialAsync("AdminMenu")
+	<div class="row">
+		@await Html.PartialAsync("AdminMenu")
 
 
-	<div class="col-9">
-		<h3>Редактировать аккаунт</h3>
+		<div class="col-9 my-2">
+			<div class="card">
+				<div class="card-body">
 
-		<div class="validation" asp-validation-summary="All"></div>
 
-		<input type="hidden" asp-for="FirstName"/>
+					<h3>EDIT PROFILE</h3>
 
-		<input type="text" asp-for="Phone"/>
-		<span asp-validation-for="Phone">Редактировать телефон</span><br />
+					<form method="post"  asp-area="Admin" asp-controller="User" asp-action="Edit">
 
-		<input type="email" asp-for="Email"/>
-		<span asp-validation-for="Email">Редактировать логин</span><br />
-		
-		<br />
-		<button type="submit" class="btn-outline-success"
+						<form asp-controller="User" asp-action="Edit">
+							@*<div class="validation" asp-validation-summary=ModelOnly></div>*@
+							<div class="row justify-content-center">
+							</div>
 
-		        asp-area="Admin"
-		        asp-controller="User"
-		        asp-action="Edit"
-		        asp-route-name="@Model.FirstName">Сохранить изменения</button> 
+							<div class="validation" asp-validation-summary="All"></div>
+							<div class="col">
+
+								<div class="mb-3">
+									<span asp-validation-for="FirstName">EDIT FIRST NAME</span><br/>
+									<input type="text" input class = "form-control" asp-for="FirstName"  placeholder="FirstName" value="@Model.FirstName"/>
+								</div>
+
+								<div class="mb-3">
+									<span asp-validation-for="LastName">EDIT LAST NAME</span><br/>
+									<input type="text" input class = "form-control" asp-for="LastName"  placeholder="LastName" value="@Model.LastName"/>
+								</div>
+
+								<div class="mb-3">
+									<span asp-validation-for="Email">EDIT EMAIL</span><br/>
+									<input type="email"  input class = "form-control" asp-for="Email" placeholder="Email" value="@Model.Email"/>
+								</div>
+
+								<div class="mb-3">
+									<span asp-validation-for="Address">EDIT ADDRESS</span><br/>
+									<input type="text"  input class = "form-control" asp-for="Address" placeholder="Address" value="@Model.Address"/>
+								</div>
+
+								<div class="mb-3">
+									<span asp-validation-for="Phone">EDIT PHONE</span><br/>
+									<input type="phone"  input class = "form-control" asp-for="Phone" placeholder="Phone" value="@Model.Phone"/>
+
+								</div>
+
+								<br/>
+								<button type="submit" asp-for="Id" value="@Model.FirstName" class="btn-outline-success"
+
+								        asp-area="Admin"
+								        asp-controller="User"
+								        asp-action="Edit"
+								        asp-route-name="@Model.FirstName">SAVE CHANGES</button>
+							</div>
+						</form>
+					</form>
+				
+				</div>
+			</div>
+		</div>
 	</div>
-
-</div>
 </form>
+
+
+

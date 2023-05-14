@@ -4,20 +4,20 @@ namespace OnlineShop.db.Models
 {
     public enum OrderStatus
     {
-        [Display(Name = "Cоздан")]
+        [Display(Name = "Created")]
         Created,
 
-        [Display(Name = "Обработан")]
+        [Display(Name = "Processed")]
         Processed,
 
-        [Display(Name = "В пути")]
+        [Display(Name = "OnTheWay")]
         OnTheWay,
 
-        [Display(Name = "Отменен")]
+        [Display(Name = "Canceled")]
         Canceled,
 
-        [Display(Name = "Доставлен")]
-        Delivered
+        [Display(Name = "Confirmed")]
+        Confirmed
 
     }
 }

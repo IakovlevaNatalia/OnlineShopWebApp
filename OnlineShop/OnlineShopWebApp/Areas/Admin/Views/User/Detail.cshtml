@@ -1,17 +1,17 @@
-﻿@model UserViewModel
+﻿@model UserAdminViewModel
 <div class="row">
 	<div class="col-6">
 		<table class="table">
 			<tr>
-				<td>Имя</td>
+				<td>NAME</td>
 				<td>@Model.FirstName</td>
 			</tr>
 			<tr>
-				<td>Телефон</td>
+				<td>PHONE</td>
 				<td>@Model.Phone</td>
 			</tr>
 			<tr>
-				<td>Email</td>
+				<td>EMAIL</td>
 				<td>@Model.Email</td>
 			</tr>
 		</table>
@@ -19,11 +19,11 @@
 	</div>
 	<br />
 	<button class="btn btn-outline-success" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-		Действия
+		ACTIONS
 	</button>
 	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangePassword" asp-route-name="@Model.FirstName">Сменить пароль</a>
-		<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-name="@Model.FirstName">Редактировать данные</a>
-		<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="EditRights" asp-route-name="@Model.FirstName">Права доступа</a>
-		<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Remove" asp-route-name="@Model.FirstName">Удалить</a>
+		<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangePassword" asp-route-name="@Model.FirstName">CHANGE PASSWORD</a>
+		<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-name="@Model.FirstName">EDIT PROFILE</a>
+		<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="EditRights" asp-route-name="@Model.FirstName">EDIT RIGHTS</a>
+		<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Remove" asp-route-name="@Model.FirstName">REMOVE</a>
 	</div>

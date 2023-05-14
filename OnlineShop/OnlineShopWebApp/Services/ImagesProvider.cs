@@ -17,18 +17,18 @@ namespace OnlineShopWebApp.Services
             this.appEnvironment = appEnvironment;
         }
 
-        public List<string> SafeFiles(IFormFile[] files, ImageFolders folder)
+        public List<string> SaveFiles(IFormFile[] files, ImageFolders folder)
         {
             var imagesPaths = new List<string>();
             foreach (var file in files)
             {
-                var imagePath = SafeFile(file, folder);
+                var imagePath = SaveFile(file, folder);
                 imagesPaths.Add(imagePath);
             }
             return imagesPaths;
         }
 
-        public string SafeFile(IFormFile file, ImageFolders folder)
+        public string SaveFile(IFormFile file, ImageFolders folder)
         {
             if (file != null)
             {

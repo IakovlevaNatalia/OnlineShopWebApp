@@ -77,8 +77,14 @@ namespace OnlineShop.db
             else
             {
                 cart.Items.Remove(existingItem);
+                databaseContext.CartItems.Remove(existingItem);
             }
-            databaseContext.CartItems.Remove(existingItem);
+
+            if (cart.Items.Count == 0)
+            {
+                databaseContext.Carts.Remove(cart);
+            }
+
             databaseContext.SaveChanges();
         }
 

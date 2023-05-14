@@ -12,9 +12,9 @@ else
 			<thead>
 				<tr>
 				    <th>ITEM NAME</th>
-	                <th>PRICE IN $</th>
+	                <th>PRICE $</th>
 					<th>AMMOUNT</th>
-	                <th>COST IN $</th>
+	                <th>COST $</th>
 					<th>ADD ITEM</th>
 					<th>REMOVE ITEM</th>
 					</tr>
@@ -28,8 +28,10 @@ else
 					<td>@item.Amount</td>
 					<td>@item.Cost</td>
 					<td><a class ="btn btn-outline-success" href="/cart/add?productId=@item.Product.Id" role="button">+</a></td>
-					<td><a class ="btn btn-outline-success" href="/cart/removeProduct?productId=@item.Product.Id" role="button">-</a></td>
-			    </tr>
+					@*<td><a class ="btn btn-outline-success" href="/cart/removeProduct?productId=@item.Product.Id" role="button">-</a></td>*@
+					<td><a class ="btn btn-outline-success" asp-area="" asp-controller="Cart" asp-action="RemoveProduct" asp-route-productId = "@item.Product.Id" >-</a></td>
+
+				</tr>
 			}
 		</tbody>
 		</table>
@@ -46,67 +48,3 @@ else
 </div>
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*<!--@model (List<Product> items, int sum)
-@{
-    ViewData["Title"] = "Shopping Cart";
-}
-
- <a href = "/">
-    <h5>Продолжить покупки</h5>
- </a>
- @Model.sum
-<div class = "row">
-	 <table>
-		 	<style>
-		table, th, td {
-			border:1px solid black;
-		}
-		table {border-collapse: collapse; width: 50%;}
-	</style> 
-		    <caption>Корзина заказов</caption>
-	<thead>
-	<tr>
-	<th>Название позиции</th>
-	<th>Количество товара в позиции</th>
-	<th>Стоимость позиции</th>
-	</tr>
-</thead>
-    @foreach(var product in Model.items)
-    {
-<tbody>
-	<tr>
-	<td>@product.Name</td>
-	<td>1</td>
-	<td>@product.Cost</td>
-</tr>
-</tbody>
-     <!--<partial name = "Product", model = "product"/>-->
-    }
-</table>
-
-    </div>
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div> -->*@

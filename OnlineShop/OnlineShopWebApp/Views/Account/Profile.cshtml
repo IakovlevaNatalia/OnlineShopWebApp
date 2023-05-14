@@ -12,18 +12,18 @@
 		<div class="card-body">
 			<div class="row">
 				<div class="col-4 text-center">
-					<img src="@Model.AvatarPath" width="150" height="150" alt="image" class="rounded-circle" />
+					<img src="@Model.AvatarPath" width="150" height="150" @*alt="image"*@ class="rounded-circle" />
 				</div>
-				<div class="col-8 text-sm-lg-start">
+				<div class="col-8 text-sm-center text-sm-start">
 					<div class="my-2">
-						<h1>@Model.FirstName</h1>
+						<h1> Hi, @Model.FirstName</h1>
 						<h1>@Model.LastName</h1>
 					</div>
 					<div class="my-2">
 						<h4>@Model.Email</h4>
 					</div>
 					<div class="my-2">
-						<a asp-controller="Account" asp-action="Edit" class="link-dark"><h6>CHANGE PERSONAL DATA</h6></a>
+						<a  class="btn btn-outline-success" asp-controller="Account" asp-action="Edit" class="link-dark"><h6>CHANGE PERSONAL DATA</h6></a>
 					</div>
 				</div>
 			</div>

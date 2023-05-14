@@ -11,10 +11,13 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
 	                        <a class="btn btn-outline-success" asp-area="" asp-controller="Home" asp-action="Index"><span class="bi bi-house-fill"> HOME</span></a>
-		                    <a class="btn btn-outline-success" alt="cartImage" asp-area="" asp-controller="Cart" asp-action="Index"><span class="bi bi-cart-fill"> CART @await Component.InvokeAsync("Cart")</span></a>
+		                </li>
+	                    <li class="nav-item">
+					        <a class="btn btn-outline-success" alt="cartImage" asp-area="" asp-controller="Cart" asp-action="Index"><span class="bi bi-cart-fill"> CART @await Component.InvokeAsync("Cart")</span></a>
+	                    </li>
+	                    <li class="nav-item">
 		                    <a class="btn btn-outline-success" alt="Favotite" asp-area="" asp-controller="Favorite" asp-action="Index"><span class="bi bi-star-fill"> FAVORITE @await Component.InvokeAsync("CalcFavoriteProductsCount")</span></a>
 	                    </li>
-	                                   
 
 	                    @if (User.Identity.IsAuthenticated)
 	                    {

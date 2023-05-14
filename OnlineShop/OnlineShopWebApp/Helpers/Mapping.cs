@@ -189,6 +189,20 @@ namespace OnlineShopWebApp.Helpers
             };
         }
 
+        public static UserAdminViewModel ToUserAdminViewModel(this User user)
+        {
+            return new UserAdminViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                AvatarPath = user.AvatarPath,
+                UserName = user.UserName,
+                Address = user.Address
+            };
+        }
+
         //public static User ToUser(this UserViewModel existingUser)
         //{
         //    return new User

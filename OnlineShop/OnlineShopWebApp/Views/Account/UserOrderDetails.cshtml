@@ -1,0 +1,37 @@
+﻿@using OnlineShop.db
+@using OnlineShop.db.Models
+@model OrderViewModel
+<form method="post">
+<div class="row">
+	<div class="col-6">
+		<table class="table">
+			<tr>
+				<td>DATE and TIME</td>
+				<td>@Model.CreateDateTime.ToString("g")</td>
+			</tr>
+			<tr>
+				<td>ADDRESS</td>
+				<td>@Model.User.Address</td>
+			</tr>
+			<tr>
+				<td>CUSTOMER NAME</td>
+				<td>@Model.User.FirstName &nbsp; @Model.User.LastName</td>
+			</tr>
+			<tr>
+				<td>PHONE</td>
+				<td>@Model.User.Phone</td>
+			</tr>
+			<tr>
+				<td>COST</td>
+				<td>@Model.Cost</td>
+			</tr>
+			<tr>
+			<td>ORDER STATUS</td>
+			<td>
+				@Model.Status
+			</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+</form>

@@ -5,7 +5,7 @@
 		@await Html.PartialAsync("AdminMenu")
 
 		<div class="col-6">
-			<h3>Список ролей для @Model.UserName</h3>
+			<h3>LIST OF ROLES для @Model.UserName</h3>
 			<div class="row">
 				<div class="col">
 					@foreach (var role in Model.AllRoles)
@@ -28,7 +28,7 @@
 						</div>
 					}
 				</div>
-				<button class="btn btn-dark" type="submit" asp-area="Admin" asp-controller="User" asp-action="EditRights" asp-route-userName="@Model.UserName">Сохранить</button>
+				<button class="btn btn-dark" type="submit" asp-area="Admin" asp-controller="User" asp-action="EditRights" asp-route-userName="@Model.UserName">SAVE CHANGES</button>
 			</div>
 		</div>
 	</div>

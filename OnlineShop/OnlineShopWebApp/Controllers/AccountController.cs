@@ -79,7 +79,7 @@ namespace OnlineShopWebApp.Controllers
             ModelState.Remove("ConfirmPassword");
             if (ModelState.IsValid)
             {
-                var imagePath = imagesProvider.SafeFile(userProfile.UploadedImage, ImageFolders.Profiles);
+                var imagePath = imagesProvider.SaveFile(userProfile.UploadedImage, ImageFolders.Profiles);
                 var existingUser = userManager.FindByNameAsync(User.Identity.Name).Result;
 
                 existingUser.Update(userProfile, imagePath);
@@ -99,6 +99,13 @@ namespace OnlineShopWebApp.Controllers
             var userId = userManager.FindByNameAsync(User.Identity.Name).Result.Id;
             var orders = ordersRepository.TryGetByUserId(userId);
             return View(orders.ToOrderViewModels());
+        }
+
+        [Authorize]
+        public IActionResult UserOrderDetails(int orderId)
+        {
+            var order = ordersRepository.TryGetById(orderId);
+            return View(Mapping.ToOrderViewModel(order));
         }
 
         public ActionResult AvatarPath()
