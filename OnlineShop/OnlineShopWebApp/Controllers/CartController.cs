@@ -19,6 +19,7 @@ namespace OnlineShopWebApp.Controllers
             this.cartRepository = cartRepository;
             this.productDataSource = productDataSource;
         }
+
         public IActionResult Index()
         {
             var user = User.Identity.Name;

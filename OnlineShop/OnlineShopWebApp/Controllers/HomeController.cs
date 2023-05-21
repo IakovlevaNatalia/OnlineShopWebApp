@@ -24,7 +24,6 @@ namespace OnlineShopWebApp.Controllers
         public IActionResult Index()
         {
             var t = User.IsInRole(Constants.AdminRoleName);
-            //var r =userManager.GetRolesAsync(userManager.FindByNameAsync(User.Identity.Name).Result).Result;
             var products = productDataSource.GetAllProducts();
 
             return View(Mapping.ToProductViewModels(products));

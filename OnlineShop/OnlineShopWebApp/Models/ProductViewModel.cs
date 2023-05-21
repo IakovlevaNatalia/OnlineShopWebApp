@@ -10,10 +10,13 @@ namespace OnlineShopWebApp.Models
 
         [Required(ErrorMessage = "Missing product name")]
         [StringLength(50, MinimumLength = 4, ErrorMessage = "Product name must be between 4 and 50 characters")]
+
         public string Name { get; set; }
+
 
         [Required(ErrorMessage = "Missing product price")]
         public decimal Cost { get; set; }
+
 
         [Required(ErrorMessage = "Description could not be empty")]
         public string Description { get; set; }

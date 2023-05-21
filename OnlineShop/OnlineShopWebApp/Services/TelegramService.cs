@@ -80,11 +80,6 @@ namespace OnlineShopWebApp.Services
             string consumerTag = rabbitChannelConsumer.BasicConsume("dev-queue-to-web", false, consumer);
         }
 
-        /// <summary>
-        /// Получили сообщение из рэбита с дессириализуем
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Consumer_Received(object sender, BasicDeliverEventArgs e)
         {
             var json = Encoding.UTF8.GetString(e.Body.ToArray());
@@ -96,11 +91,6 @@ namespace OnlineShopWebApp.Services
             rabbitChannelConsumer.BasicAck(e.DeliveryTag, false);
         }
 
-        /// <summary>
-        /// Получаем сообщение, что статус заказа поменялся из проекта onlina shopDB
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void OrdersRepository_OrderStatusUpdatedEvent(object sender, OrderStatusUpdatedEventArgs e)
         {
             var message = new QueueMessageModel()
@@ -117,10 +107,6 @@ namespace OnlineShopWebApp.Services
                 body: body);
         }
 
-        /// <summary>
-        /// Функционал бота
-        /// </summary>
-        /// <param name="message"></param>
         private void MessageReceived(QueueMessageModel message)
         {
             if (message.MessageType == MessageType.Text)
@@ -178,11 +164,6 @@ namespace OnlineShopWebApp.Services
 
         }
 
-        /// <summary>
-        /// Отправляет пользователю подробный список заказов
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
         public string BuildOrdersMessage(User user)
         {
             var orders = ordersRepository.TryGetByUserId(user.Id);
@@ -208,11 +189,6 @@ namespace OnlineShopWebApp.Services
             }
         }
 
-        /// <summary>
-        /// Отправляет пользователю обновленный статус заказа
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
         public string BuildOrderStatusMessage(User user)
         {
             var orders = ordersRepository.TryGetByUserId(user.Id);

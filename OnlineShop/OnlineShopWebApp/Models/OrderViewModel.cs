@@ -1,19 +1,13 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using System;
-using OnlineShop.db.Models;
-using OnlineShop.db;
 
 namespace OnlineShopWebApp.Models
 {
     public class OrderViewModel
     {
         public int? Id { get; set; }
-        //public string Name { get; set; }
-        //public string Phone { get; set; }
-        //public string Email { get; set; }
-        //public string Address { get; set; }
-        
+
         public UserViewModel User { get; set; }
 
         public OrderStatusViewModel Status { get; set; }

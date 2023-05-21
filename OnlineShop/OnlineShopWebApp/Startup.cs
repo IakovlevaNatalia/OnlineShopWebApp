@@ -63,7 +63,6 @@ namespace OnlineShopWebApp
 
             services.AddSingleton<ICartRepository, CartsDbRepository>();
             services.AddSingleton<IProductDataSource, ProductsDbRepository>();
-            services.AddSingleton<ICustomerProfile, InMemoryCustomerProfile>();
             services.AddSingleton<IOrdersRepository, OrdersDbRepository>();
             services.AddSingleton<IFavoriteRepository, FavoriteDbRepository>();
             services.AddSingleton<ImagesProvider>();

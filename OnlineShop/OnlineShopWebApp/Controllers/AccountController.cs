@@ -47,6 +47,7 @@ namespace OnlineShopWebApp.Controllers
                     ModelState.AddModelError("", "Неверный логин или пароль");
                 }
             }
+
             return View(nameof(Login), userCredentials);
         }
 
@@ -56,6 +57,7 @@ namespace OnlineShopWebApp.Controllers
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
+
         [Authorize]
         public IActionResult Profile()
         {
@@ -63,6 +65,8 @@ namespace OnlineShopWebApp.Controllers
             var userProfileViewModel = user.ToUserViewModel();
             return View(userProfileViewModel);
         }
+
+
         [Authorize]
         public IActionResult Edit()
         {
@@ -70,6 +74,7 @@ namespace OnlineShopWebApp.Controllers
             var userProfileViewModel = user.ToUserViewModel();
             return View(userProfileViewModel);
         }
+
 
         [Authorize]
         [HttpPost]
@@ -100,6 +105,7 @@ namespace OnlineShopWebApp.Controllers
             var orders = ordersRepository.TryGetByUserId(userId);
             return View(orders.ToOrderViewModels());
         }
+
 
         [Authorize]
         public IActionResult UserOrderDetails(int orderId)

@@ -6,7 +6,6 @@ using OnlineShopWebApp.Helpers;
 using OnlineShop.db.Models;
 using System.Linq;
 using System.Collections.Generic;
-using OnlineShop.db;
 using OnlineShopWebApp.Areas.Admin.Models;
 using OnlineShopWebApp.Areas.Admin.Views.User;
 
@@ -25,16 +24,19 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
             this.userManager = userManager;
             this.rolesManager = rolesManager;
         }
+
         public IActionResult Index()
         {
             var users = userManager.Users.ToList();
             return View(users.Select(u => u.ToUserAdminViewModel()).ToList());
         }
+
         public IActionResult Detail(string name)
         {
             var user = userManager.FindByNameAsync(name).Result;
             return View(user.ToUserAdminViewModel());
         }
+
         public IActionResult ChangePassword(string id)
         {
             var changePassword = new ChangePassword()
@@ -61,6 +63,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
                 userManager.UpdateAsync(user).Wait();
                 return RedirectToAction(nameof(Index));
             }
+
             return RedirectToAction(nameof(ChangePassword));
         }
         public IActionResult Remove(string name)
@@ -68,7 +71,6 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
             var user = userManager.FindByNameAsync(name).Result;
             userManager.DeleteAsync(user).Wait();
             return RedirectToAction(nameof(Index));
-
         }
 
 

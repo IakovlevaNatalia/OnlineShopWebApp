@@ -16,6 +16,7 @@ namespace OnlineShopWebApp.Controllers
             this.favoriteRepository = favoriteRepository;
             this.productDataSource = productDataSource;
         }
+
         public IActionResult Index()
         {
             var products = favoriteRepository.GetAll(User.Identity.Name);

@@ -8,9 +8,15 @@ namespace OnlineShop.db
     public class DatabaseContext : IdentityDbContext<User>
     {
         public DbSet<Product> Products { get; set; }
+
         public DbSet<Cart> Carts { get; set; }
+
         public DbSet<CartItem> CartItems { get; set; }
-        public DbSet<FavoriteProduct> FavoriteProducts { get; set; }
+
+        public DbSet<Favorites> Favorites { get; set; }
+
+        public DbSet<FavoriteProducts> FavoriteProducts { get; set; }
+
         public DbSet<Image> Image { get; set; }
 
         public DbSet<Order> Orders { get; set; }
@@ -118,20 +124,18 @@ namespace OnlineShop.db
 
             modelBuilder.Entity<Product>().HasData(new List<Product>()
             {
-
-                new Product(product1Id, "Тур в Турцию", 50000,  "Тур в Турцию за 50000 рублей"),
-                new Product(product2Id, "Тур в Грецию", 60000, "Тур в Грецию за 60000 рублей"),
-                new Product(product3Id,"Тур в Болгарию", 45000, "Тур в Болгарию за 45000 рублей"),
-                new Product(product4Id,"Тур на Арубу", 50000, "Тур на Арубу за 50000 рублей"),
-                new Product(product5Id,"Тур в Мексику", 60000, "Тур в Мексику за 60000 рублей"),
-                new Product(product6Id,"Тур на Бали", 45000, "Тур на Бали за 45000 рублей"),
-                new Product(product7Id,"Тур в Египет", 50000, "Тур в Еипет за 50000 рублей"),
-                new Product(product8Id,"Тур в ОАЭ", 60000, "Тур в ОАЭ за 60000 рублей"),
-                new Product(product9Id,"Тур на Сейшельские острова", 45000, "Тур на Сейшельские острова за 45000 рублей"),
-                new Product(product10Id,"Тур на Ямайку", 50000, "Тур на Мальдивские острова за 50000 рублей"),
-                new Product(product11Id,"Тур в Индию", 60000, "Тур в Индию за 60000 рублей"),
-                new Product(product12Id,"Тур в Таиланд", 45000, "Тур в Таиланд за 45000 рублей")
-
+                new Product(product1Id,"Tour to Turkey", 1000,  "Best tour to Turkey"),
+                new Product(product2Id,"Tour to Greece", 1100, "Best tour to Greece"),
+                new Product(product3Id,"Tour to Bulgaria", 1200, "Best tour to Bulgaria"),
+                new Product(product4Id,"Tour to Aruba", 1300, "Best tour to Aruba"),
+                new Product(product5Id,"Tour to Mexico", 1400, "Best tour to Mexico"),
+                new Product(product6Id,"Tour to Bali", 1500, "Best tour to Bali"),
+                new Product(product7Id,"Tour to Egypt", 1600, "Best tour to to Egypt"),
+                new Product(product8Id,"Tour to UAE", 1700, "Best tour to UAE"),
+                new Product(product9Id,"Tour to Seychelles", 1800, "Best tour to Seychelles"),
+                new Product(product10Id,"Tour to Jamaica", 1900, "Best tour to Jamaica"),
+                new Product(product11Id,"Tour to India", 2000, "Best tour to India"),
+                new Product(product12Id,"Tour to Thailand", 2210, "Best tour to Thailand")
             });
         }
     }

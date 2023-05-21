@@ -15,8 +15,6 @@ namespace OnlineShopWebApp.Controllers
         private readonly IOrdersRepository ordersRepository;
         private readonly UserDbRepository userDbRepository;
         
-        // add user repository
-
         public OrderCompleteController(ICartRepository cartRepository, ICustomerProfile customerProfile, IOrdersRepository ordersRepository, UserDbRepository userDbRepository)
         {
             this.cartRepository = cartRepository;
@@ -29,7 +27,6 @@ namespace OnlineShopWebApp.Controllers
         {
             var currentUser = userDbRepository.TryGetByName(User.Identity.Name);
             var userViewModel = currentUser.ToUserViewModel();
-            //get current user, convert to UserViewModel and send it to the view
             return View(userViewModel);
         }
 

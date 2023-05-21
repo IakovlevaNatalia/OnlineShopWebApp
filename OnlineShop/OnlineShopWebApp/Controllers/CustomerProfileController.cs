@@ -2,7 +2,6 @@
 using OnlineShop.db;
 using OnlineShopWebApp.Helpers;
 using OnlineShopWebApp.Models;
-using OnlineShopWebApp.Services;
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -14,6 +13,7 @@ namespace OnlineShopWebApp.Controllers
         {
             this.userDbRepository = userDbRepository;
         }
+
         public IActionResult Index()
         {
             var currentUser = userDbRepository.TryGetByName(User.Identity.Name);

@@ -6,8 +6,10 @@ namespace OnlineShopWebApp.Models
     {
         public string UserName { get; set; }
 
+
         [Required(ErrorMessage = "New password")]
         public string Password { get; set; }
+
 
         [Required(ErrorMessage = "please, confirm your new password")]
         [Compare("Password", ErrorMessage = "Password mismatch")]
