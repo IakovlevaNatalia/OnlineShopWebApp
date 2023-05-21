@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace OnlineShop.db.Models
 {
     public class Cart

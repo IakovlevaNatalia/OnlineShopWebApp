@@ -28,13 +28,17 @@ namespace OnlineShopWebApp.Models
         [EmailAddress(ErrorMessage = "Please, check your e-mail")]
         public string Login { get; set; }
 
+
         [Required(ErrorMessage = "Missing password")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Please, confirm your password")]
         [Compare("Password", ErrorMessage = "Password mismatch")]
+
         public string ConfirmPassword { get; set; }
+
         public string ReturnUrl { get; set; }
+
         public string ImagePath { get; set; }
     }
 }

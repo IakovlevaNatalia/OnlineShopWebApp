@@ -11,11 +11,15 @@ namespace OnlineShopWebApp.Areas.Admin.Models
         [Required]
         public string Name { get; set; }
 
+
         [Range(1, 10000000, ErrorMessage = "Price must be between 1 and 1000000")]
         public decimal Cost { get; set; }
+
         [Required]
         public string Description { get; set; }
+
         public List<string> ImagesPaths { get; set; }
+
         public IFormFile[] UploadFiles { get; set; }
 
     }

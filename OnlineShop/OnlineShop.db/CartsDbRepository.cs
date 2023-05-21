@@ -1,6 +1,5 @@
 ﻿using System;
 using OnlineShop.db.Models;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,13 +9,11 @@ namespace OnlineShop.db
     {
         private readonly IProductDataSource productDataSource;
         private readonly DatabaseContext databaseContext;
-
         public CartsDbRepository(IProductDataSource productDataSource, DatabaseContext databaseContext)
         {
             this.productDataSource = productDataSource;
             this.databaseContext = databaseContext;
         }
-
         public void Add(Product product, string userId)
         {
             var cart = TryGetByUserId(userId);
@@ -47,7 +44,7 @@ namespace OnlineShop.db
             {
                 existingItem.Amount += 1;
             }
-  
+
             databaseContext.SaveChanges();
         }
 
@@ -61,13 +58,11 @@ namespace OnlineShop.db
         {
             var product = productDataSource.GetProductById(id);
             Remove(product, userId);
-
         }
 
         public void Remove(Product product, string userId)
         {
             var cart = TryGetByUserId(userId);
-
             var existingItem = cart.Items.First(x => x.Product.Id == product.Id);
 
             if (existingItem.Amount > 1)
@@ -79,7 +74,6 @@ namespace OnlineShop.db
                 cart.Items.Remove(existingItem);
                 databaseContext.CartItems.Remove(existingItem);
             }
-
             if (cart.Items.Count == 0)
             {
                 databaseContext.Carts.Remove(cart);
@@ -97,13 +91,13 @@ namespace OnlineShop.db
 
         public Cart TryGetByUserId(string userId)
         {
-            return databaseContext.Carts.Include(x=> x.Items).FirstOrDefault(x => x.UserId == userId);
+            return databaseContext.Carts.Include(x=> x.Items)
+                .FirstOrDefault(x => x.UserId == userId);
         }
 
         public void GetAllProduct()
         {
             throw new System.NotImplementedException();
         }
-
     }
 }

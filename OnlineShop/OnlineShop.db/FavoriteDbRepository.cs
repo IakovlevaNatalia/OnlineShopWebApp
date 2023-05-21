@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using OnlineShop.db.Models;
 using Microsoft.EntityFrameworkCore;
+using OnlineShop.db.Models;
 
 namespace OnlineShop.db
 {
@@ -18,47 +18,58 @@ namespace OnlineShop.db
         {
             var fav = GetForUser(userId);
 
-            if (fav.Products.Contains(product))
+            if (fav.FavoriteProducts.Any(x => x.Product.Id == product.Id))
                 return;
 
-            fav.Products.Add(product);
+            fav.FavoriteProducts.Add(new FavoriteProducts
+            {
+                FavoriteId = fav.Id,
+                ProductId = product.Id
+            });
+
+            databaseContext.SaveChanges();
         }
+
         public void Clear(string userId)
         {
             var fav = GetForUser(userId);
-            fav.Products.Clear();
+            fav.FavoriteProducts.Clear();
             databaseContext.SaveChanges();
         }
 
         public List<Product> GetAll(string userId)
         {
-            return databaseContext.FavoriteProducts.FirstOrDefault(x => x.UserId == userId)?.Products;
+            return databaseContext.Favorites.FirstOrDefault(x => x.UserId == userId)?.FavoriteProducts.Select(x => x.Product).ToList();
         }
 
         public void Remove(string userId, int productId)
         {
             var fav = GetForUser(userId);
-            var product = fav.Products.First(x=>x.Id == productId);
-            fav.Products.Remove(product);
+            var favProduct = fav.FavoriteProducts.First(x => x.ProductId == productId);
+            fav.FavoriteProducts.Remove(favProduct);
             databaseContext.SaveChanges();
         }
 
-        public FavoriteProduct GetForUser(string userId)
+        public Favorites GetForUser(string userId)
         {
-            var fav = databaseContext.FavoriteProducts.FirstOrDefault(u => u.UserId == userId); 
+            var fav = databaseContext.Favorites.FirstOrDefault(u => u.UserId == userId);
 
             if (fav == null)
             {
-                fav = new FavoriteProduct() { UserId = userId };
-                databaseContext.FavoriteProducts.Add(fav);
+                fav = new Favorites() { UserId = userId };
+                databaseContext.Favorites.Add(fav);
                 databaseContext.SaveChanges();
             }
 
             return fav;
         }
-        public FavoriteProduct TryGetByUserId(string userId)
+
+        public List<FavoriteProducts> TryGetByUserId(string userId)
         {
-            return databaseContext.FavoriteProducts.FirstOrDefault(x => x.UserId == userId);
+            return databaseContext.Favorites
+                .Include(x=>x.FavoriteProducts)
+                .FirstOrDefault(x => x.UserId == userId)?
+                .FavoriteProducts ?? new List<FavoriteProducts>();
         }
     }
 }

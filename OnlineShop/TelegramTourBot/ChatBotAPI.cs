@@ -11,8 +11,6 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Telegram.Bot.Types.Enums;
 
-
-
 namespace TelegramTourBot
 {
     public class ChatBotAPI : IChatBotApi
@@ -24,14 +22,6 @@ namespace TelegramTourBot
 
         private IConnection rabbitConnectionConsumer;
         private IModel rabbitChannelConsumer;
-
-        /// <summary>
-        /// Функция, которая получает сообщения из ТГ
-        /// </summary>
-        /// <param name="botClient"></param>
-        /// <param name="update"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
         private async Task HandleUpdateAsync( 
             ITelegramBotClient botClient, 
             Update update,
@@ -58,15 +48,11 @@ namespace TelegramTourBot
                 }
                 else
                 {
-                    await botClient.SendTextMessageAsync(message.Chat.Id, "Пожалуйста, введите команду");
+                    await botClient.SendTextMessageAsync(message.Chat.Id, "Please, send request");
                 }
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="queueMessageModel"></param>
         private void QueueRabbitMessage(QueueMessageModel queueMessageModel)
         {
             var jsonMessage = JsonConvert.SerializeObject(queueMessageModel);
@@ -76,22 +62,12 @@ namespace TelegramTourBot
             rabbitChannelPublisher.BasicPublish(exchange: "dev-ex-to-web", routingKey: "", basicProperties: null, body: body);
         }
 
-        /// <summary>
-        /// Обработчик ошибок
-        /// </summary>
-        /// <param name="botClient"></param>
-        /// <param name="exception"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception,
             CancellationToken cancellationToken)
         {
             //Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(exception));
         }
 
-        /// <summary>
-        /// Инициализация бота
-        /// </summary>
         public void Init() 
         {
             if (bot == null)
@@ -114,9 +90,6 @@ namespace TelegramTourBot
             InitRabbit();
         }
 
-        /// <summary>
-        /// Инициализация Rabbit
-        /// </summary>
         void InitRabbit()
         {
             ConnectionFactory factory = new ConnectionFactory();
@@ -134,14 +107,14 @@ namespace TelegramTourBot
             rabbitConnectionPublisher = factory.CreateConnection();
             rabbitConnectionConsumer = factory.CreateConnection();
 
-            rabbitChannelPublisher = rabbitConnectionPublisher.CreateModel(); //объявляет обмен и очередь в Web
+            rabbitChannelPublisher = rabbitConnectionPublisher.CreateModel(); 
             {
                 rabbitChannelPublisher.ExchangeDeclare("dev-ex-to-web", ExchangeType.Direct, true); 
                 rabbitChannelPublisher.QueueDeclare("dev-queue-to-web", true, false, false, null);
                 rabbitChannelPublisher.QueueBind("dev-queue-to-web", "dev-ex-to-web", "", null);
             }
 
-            rabbitChannelConsumer = rabbitConnectionConsumer.CreateModel(); ////объявляет обмен и очередь в Telegram
+            rabbitChannelConsumer = rabbitConnectionConsumer.CreateModel(); 
             {
                 rabbitChannelConsumer.ExchangeDeclare("dev-ex-to-telegram", ExchangeType.Direct, true);
                 rabbitChannelConsumer.QueueDeclare("dev-queue-to-telegram", true, false, false, null);
@@ -157,11 +130,6 @@ namespace TelegramTourBot
             string consumerTag = rabbitChannelConsumer.BasicConsume("dev-queue-to-telegram", false, consumer);
         }
 
-        /// <summary>
-        /// Получаем сообщение из рэббита и дессириализуем
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Consumer_Received(object sender, BasicDeliverEventArgs e)
         {
             var json = Encoding.UTF8.GetString(e.Body.ToArray());
@@ -173,10 +141,6 @@ namespace TelegramTourBot
             rabbitChannelConsumer.BasicAck(e.DeliveryTag, false);
         }
 
-        /// <summary>
-        /// Запрос на контакт, до этого пользователь был анонимный
-        /// </summary>
-        /// <param name="chatId"></param>
         public async void SendContactRequest(long chatId) 
         {
             var button = KeyboardButton.WithRequestContact("Send contact");
@@ -185,37 +149,22 @@ namespace TelegramTourBot
             await bot.SendTextMessageAsync(chatId, "Please send contact", replyMarkup: keyboard);
         }
 
-        /// <summary>
-        /// Отправить приветственное письмо
-        /// </summary>
-        /// <param name="chatId"></param>
-        /// <param name="firstName"></param>
         public async void SendWelcomeMessage(long chatId, string firstName) 
         {
-            await bot.SendTextMessageAsync(chatId, $"Добро пожаловать, {firstName}");
+            await bot.SendTextMessageAsync(chatId, $"Welcome, {firstName}");
         }
 
-        /// <summary>
-        /// Отправить в ТГ сообщение пользователю 
-        /// </summary>
-        /// <param name="chatId"></param>
-        /// <param name="text"></param>
         public async void SendResponse(long chatId, string text) 
         {
             await bot.SendTextMessageAsync(chatId, text);
         }
 
-        /// <summary>
-        /// Отправить пользователю клавиатуру
-        /// </summary>
-        /// <param name="chatId"></param>
-        /// <param name="text"></param>
         public async void SendKeyboard(long chatId, string text) 
         {
             var keyboard = new ReplyKeyboardMarkup(new[]
             {
-                new KeyboardButton[] {"Список заказов", "Статус заказа"},
-                new KeyboardButton[] {"Наши контакты", "Спецпредложения"}
+                new KeyboardButton[] {"List of Orders", "Order Status"},
+                new KeyboardButton[] {"Our contacts", "Special offers"}
             });
 
             await bot.SendTextMessageAsync(chatId, text, replyMarkup: keyboard);

@@ -1,8 +1,6 @@
 ﻿using OnlineShop.db.Models;
 
-
 namespace OnlineShop.db
-
 {
     public interface ICartRepository
     {

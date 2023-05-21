@@ -43,19 +43,20 @@
 					{
 						@Html.HiddenFor(model => Model.ImagesPaths[i])
 					}
-					<label>IMAGE</label><br/>
+					<label></label><br/>
 
 					@foreach (var ImagePath in Model.ImagesPaths)
 					{
-						<div style="padding: 4px">
-							<img src="@ImagePath" width="150" height="150"/>
-						</div>
+					    <div style="padding: 4px">
+                            <img src="@ImagePath" width="150" height="150"/>
+                        </div>
+					    <button type="submit" class="btn-outline-success" asp-area="Admin" asp-controller="Product" asp-route-url = "@ImagePath" asp-action="RemoveImage">REMOVE IMAGE</button>
 					}
 				</div>
 			</div>
 	
 			<div class="form-group">
-				<label>UPLOAD NEW IMAGE</label>
+				<label>Upload new image</label>
 				<input type="file" multiple accept="image/*" class="form-control" name="UploadFiles"/> 
 			</div>
 			<div>

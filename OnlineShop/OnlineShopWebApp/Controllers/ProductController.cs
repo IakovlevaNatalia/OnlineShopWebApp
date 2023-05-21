@@ -7,6 +7,7 @@ namespace OnlineShopWebApp.Controllers
     public class ProductController : Controller
     {
         private readonly IProductDataSource productDataSource;
+
         public ProductController(IProductDataSource productDataSource)
         {
             this.productDataSource = productDataSource;

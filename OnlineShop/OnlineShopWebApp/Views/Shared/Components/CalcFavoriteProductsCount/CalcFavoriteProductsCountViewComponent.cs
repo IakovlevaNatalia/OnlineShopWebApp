@@ -22,11 +22,9 @@ namespace OnlineShopWebApp.Views.Shared.Components.CalcFavoriteProductsCount
             var productCount = 0;
             if (User.Identity.IsAuthenticated)
             {
-                //TODO 
-                string userId = (await userManager.FindByNameAsync(User.Identity.Name)).Id;
-                var favorites = favoriteRepository.TryGetByUserId(User.Identity.Name);
-                productCount = favorites?.Products.Count ?? 0;
+                productCount = favoriteRepository.TryGetByUserId(User.Identity.Name).Count;
             }
+
             return View("CalcFavoriteProductsCount", productCount);
         }
     }

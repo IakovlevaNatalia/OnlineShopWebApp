@@ -2,7 +2,6 @@
 using OnlineShopWebApp.Models;
 using OnlineShop.db.Models;
 using System.Linq;
-using OnlineShop.db;
 using OnlineShopWebApp.Areas.Admin.Models;
 
 namespace OnlineShopWebApp.Helpers
@@ -16,6 +15,7 @@ namespace OnlineShopWebApp.Helpers
                 yield return ToProductViewModel(product);
             }
         }
+
         public static ProductViewModel ToProductViewModel(this Product product)
         {
             return new ProductViewModel
@@ -27,6 +27,7 @@ namespace OnlineShopWebApp.Helpers
                 ImagesPath = product.Images?.Select(x => x.Url).ToArray()
             };
         }
+
         public static CartViewModel ToCartViewModel(Cart cart)
         {
             if (cart != null)
@@ -65,13 +66,13 @@ namespace OnlineShopWebApp.Helpers
                 };
             }
         }
-        public static FavoriteProductViewModel ToFavoriteProductViewModel(FavoriteProduct favoriteProduct)
+        public static FavoriteProductViewModel ToFavoriteProductViewModel(FavoriteProducts favoriteProduct)
         {
             return new FavoriteProductViewModel
             {
-                Id = favoriteProduct.Id,
-                UserId = favoriteProduct.UserId,
-                FavoriteProducts = ToProductViewModels(favoriteProduct.Products).ToList()
+                ////Id = favoriteProduct.Id,
+                ////UserId = favoriteProduct.UserId,
+                ////FavoriteProducts = ToProductViewModels(favoriteProduct.Products).ToList()
             };
         }
         public static OrderViewModel ToOrderViewModel(Order order)
@@ -93,6 +94,7 @@ namespace OnlineShopWebApp.Helpers
                 yield return ToOrderViewModel(order);
             }
         }
+
         public static Order ToOrder(OrderViewModel order)
         {
             return new Order
@@ -103,6 +105,7 @@ namespace OnlineShopWebApp.Helpers
             };
 
         }
+
         public static IEnumerable<CartItem> ToCartItems(IEnumerable<CartItemViewModel> cartItems)
         {
             foreach (var item in cartItems)
@@ -119,6 +122,7 @@ namespace OnlineShopWebApp.Helpers
                 Product = ToProduct(cartItem.Product),
             };
         }
+
         public static Product ToProduct(this ProductViewModel product)
         {
             return new Product
@@ -152,6 +156,7 @@ namespace OnlineShopWebApp.Helpers
                 Images = editProduct.ImagesPaths.ToImages()
             };
         }
+
         public static EditProductViewModel ToEditProductViewModel(this Product product)
         {
             return new EditProductViewModel
@@ -180,7 +185,6 @@ namespace OnlineShopWebApp.Helpers
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                //Password = user.Password,
                 Email = user.Email,
                 Phone = user.PhoneNumber,
                 AvatarPath = user.AvatarPath,
@@ -202,24 +206,10 @@ namespace OnlineShopWebApp.Helpers
                 Address = user.Address
             };
         }
-
-        //public static User ToUser(this UserViewModel existingUser)
-        //{
-        //    return new User
-        //    {
-        //        FirstName = existingUser.FirstName,
-        //        LastName = existingUser.LastName,
-        //        Email = existingUser.Email,
-        //        AvatarPath = existingUser.AvatarPath,
-        //        //Phone = existingUser.Phone,
-
-        //    };
-        //}
         public static User Update(this User user, UserViewModel userProfile, string imagePath = null)
         {
             user.FirstName = userProfile.FirstName;
             user.LastName = userProfile.LastName;
-            //user.Email = userProfile.Email;
             user.AvatarPath = imagePath ?? user.AvatarPath;
             user.PhoneNumber = userProfile.Phone;
             user.Address = userProfile.Address;

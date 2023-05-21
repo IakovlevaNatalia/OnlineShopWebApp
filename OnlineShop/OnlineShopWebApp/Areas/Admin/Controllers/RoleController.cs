@@ -19,6 +19,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
         {
             this.rolesManager= rolesManager;
         }
+
         public IActionResult Index()
         {
             var roles = rolesManager.Roles.ToList();
@@ -46,6 +47,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+
             return View(role);
         }
 
@@ -58,6 +60,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
             {
                 rolesManager.DeleteAsync(role).Wait();
             }
+
             return RedirectToAction(nameof(Index));
         }
     }

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Telegram.Bot.Types.Enums;
+﻿using Telegram.Bot.Types.Enums;
 
 namespace TelegramTourBot
 {
-    public class QueueMessageModel // объект содержаший инфо о телегр сообщении 
+    public class QueueMessageModel 
     {
         public string MessageReceive { get; set; }
 

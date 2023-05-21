@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Policy;
+using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Services;
 using OnlineShopWebApp.Helpers;
 using Microsoft.AspNetCore.Authorization;
@@ -73,6 +74,12 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
             }
             
             productDataSource.Update(product.ToProduct());
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult RemoveImage (string url)
+        {
+            productDataSource.RemoveImage(url);
             return RedirectToAction(nameof(Index));
         }
     }

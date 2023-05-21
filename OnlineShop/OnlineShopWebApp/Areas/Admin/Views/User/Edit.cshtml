@@ -5,11 +5,9 @@
 	<div class="row">
 		@await Html.PartialAsync("AdminMenu")
 
-
 		<div class="col-9 my-2">
 			<div class="card">
 				<div class="card-body">
-
 
 					<h3>EDIT PROFILE</h3>
 
@@ -46,7 +44,6 @@
 								<div class="mb-3">
 									<span asp-validation-for="Phone">EDIT PHONE</span><br/>
 									<input type="phone"  input class = "form-control" asp-for="Phone" placeholder="Phone" value="@Model.Phone"/>
-
 								</div>
 
 								<br/>
@@ -59,7 +56,6 @@
 							</div>
 						</form>
 					</form>
-				
 				</div>
 			</div>
 		</div>

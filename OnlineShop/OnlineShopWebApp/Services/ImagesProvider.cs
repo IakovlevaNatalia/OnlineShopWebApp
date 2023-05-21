@@ -25,6 +25,7 @@ namespace OnlineShopWebApp.Services
                 var imagePath = SaveFile(file, folder);
                 imagesPaths.Add(imagePath);
             }
+
             return imagesPaths;
         }
 
@@ -46,6 +47,7 @@ namespace OnlineShopWebApp.Services
                 }
                 return "/images" + folder + "/" + fileName;
             }
+
             return null;
         }
     }
