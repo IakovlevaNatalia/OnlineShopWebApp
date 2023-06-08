@@ -2,16 +2,16 @@
 {
     public interface ICustomerProfile
     {
-        string Adress { get; set; }
+        string Address { get; set; }
 
         string Email { get; set; }
 
         int Id { get; set; }
 
-        string Name { get; set; }
+        string FirstName { get; set; }
 
         string Phone { get; set; }
 
-        string Surname { get; set; }
+        string LastName { get; set; }
     }
 }

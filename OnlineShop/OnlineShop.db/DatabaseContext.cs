@@ -24,6 +24,7 @@ namespace OnlineShop.db
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
         {
+            this.Database.SetCommandTimeout(300);
             Database.Migrate();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

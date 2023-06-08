@@ -37,7 +37,7 @@ namespace OnlineShopWebApp.Services
             this.userDbRepository = userDbRepository;
             this.ordersRepository = ordersRepository;
 
-            InitRabbit();
+            //InitRabbit();
         }
 
         void InitRabbit()

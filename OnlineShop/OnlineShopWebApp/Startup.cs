@@ -28,10 +28,16 @@ namespace OnlineShopWebApp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("online_shop");
+            //var env = Environment.GetEnvironmentVariables();
+            var dbPassword = Environment.GetEnvironmentVariable("dbpass") ?? "Cigara2005!";
+            string connection = string.Format(Configuration.GetConnectionString("online_shop"), dbPassword);
 
             services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlServer(connection), ServiceLifetime.Singleton);
+                options.UseSqlServer(connection, builder =>
+                {
+                    builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(61), null);
+                }), 
+                ServiceLifetime.Singleton);
 
             //services.AddDbContext<IdentityContext>(options =>
             //    options.UseSqlServer(connection), ServiceLifetime.Singleton);
@@ -69,7 +75,8 @@ namespace OnlineShopWebApp
             services.AddSingleton<IChatBotApi, ChatBotAPI>();
             services.AddSingleton<UserDbRepository>();
             services.AddSingleton<TelegramService>();
-            
+            services.AddSingleton<ICustomerProfile, InMemoryCustomerProfile>();
+
 
             services.AddControllersWithViews();
 

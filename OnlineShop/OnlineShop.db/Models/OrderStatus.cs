@@ -5,7 +5,7 @@ namespace OnlineShop.db.Models
     public enum OrderStatus
     {
         [Display(Name = "Created")]
-        Created,
+        Created = 0,
 
         [Display(Name = "Processed")]
         Processed,

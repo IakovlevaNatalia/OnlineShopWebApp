@@ -6,17 +6,17 @@ namespace OnlineShopWebApp.Models
         [Display(Name = "Created")]
         Created,
 
-        [Display(Name = "Confirmed")]
-        Confirmed,
-
         [Display(Name = "Processed")]
         Processed,
+
+        [Display(Name = "OnTheWay")]
+        OnTheWay,
 
         [Display(Name = "Canceled")]
         Canceled,
 
-        [Display(Name = "Not confirmed")]
-        NotConfirmed
+        [Display(Name = "Confirmed")]
+        Confirmed,
 
     }
 }

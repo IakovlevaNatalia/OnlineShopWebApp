@@ -87,7 +87,7 @@ namespace TelegramTourBot
                 );
             }
 
-            InitRabbit();
+            //InitRabbit();
         }
 
         void InitRabbit()

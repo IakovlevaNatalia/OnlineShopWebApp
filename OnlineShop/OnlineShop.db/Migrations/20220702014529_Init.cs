@@ -285,18 +285,18 @@ namespace OnlineShop.db.Migrations
                 columns: new[] { "Id", "Cost", "Description", "FavoriteProductId", "IsActive", "Name" },
                 values: new object[,]
                 {
-                    { -12, 45000m, "Тур в Таиланд за 45000 рублей", null, true, "Тур в Таиланд" },
-                    { -11, 60000m, "Тур в Индию за 60000 рублей", null, true, "Тур в Индию" },
-                    { -10, 50000m, "Тур на Мальдивские острова за 50000 рублей", null, true, "Тур на Ямайку" },
-                    { -9, 45000m, "Тур на Сейшельские острова за 45000 рублей", null, true, "Тур на Сейшельские острова" },
-                    { -8, 60000m, "Тур в ОАЭ за 60000 рублей", null, true, "Тур в ОАЭ" },
-                    { -7, 50000m, "Тур в Еипет за 50000 рублей", null, true, "Тур в Египет" },
-                    { -6, 45000m, "Тур на Бали за 45000 рублей", null, true, "Тур на Бали" },
-                    { -5, 60000m, "Тур в Мексику за 60000 рублей", null, true, "Тур в Мексику" },
-                    { -4, 50000m, "Тур на Арубу за 50000 рублей", null, true, "Тур на Арубу" },
-                    { -3, 45000m, "Тур в Болгарию за 45000 рублей", null, true, "Тур в Болгарию" },
-                    { 1, 50000m, "Тур в Турцию за 50000 рублей", null, true, "Тур в Турцию" },
-                    { 2, 60000m, "Тур в Грецию за 60000 рублей", null, true, "Тур в Грецию" }
+                    { -12, 2210m, "Tour to Thailand", null, true, "Best tour to Thailand" },
+                    { -11, 2000m, "Tour to India", null, true, "Best tour to India" },
+                    { -10, 1900m, "Tour to Jamaica", null, true, "Best tour to Jamaica" },
+                    { -9, 1800m, "Tour to Seychelles", null, true, "Best tout to Seychelles" },
+                    { -8, 1700m, "Tour to UAE", null, true, "Best tour to UAE" },
+                    { -7, 1600m, "Tour to Egypt", null, true, "Best tour to Egypt" },
+                    { -6, 1500m, "Tour to Bali", null, true, "Best tour to Bali" },
+                    { -5, 1400m, "Tour to Mexico", null, true, "Best tout to Mexico" },
+                    { -4, 1300m, "Tour to Aruba", null, true, "Best tout to Aruba" },
+                    { -3, 1200m, "Tour to Bulgaria", null, true, "Best tour to Bulgaria" },
+                    { 1, 1000m, "Tour to Turkey", null, true, "Best tour to Turkey" },
+                    { 2, 1100m, "Tour to Greece", null, true, "Best tout to Greece" }
                 });
 
             migrationBuilder.InsertData(
