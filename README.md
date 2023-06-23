@@ -3,7 +3,7 @@
 - The Git / GitHub version control system.
 - MSSQL Server database
 - HTML, CSS, Bootstrap, RAZOR
-- Created docker container
+- Created docker container docker pull iakovlevanatalia/onlineshopwebapp
 - Implemented the design pattern Model-View-Controller
 - Used dependency injection
 - Partial Views
