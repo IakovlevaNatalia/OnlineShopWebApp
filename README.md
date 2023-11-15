@@ -1,22 +1,19 @@
-# OnlineShopWebApp
-- The Online Shop WEB App was developed in VISUAL STUDIO using the ASP.NET MVC software platform.
+Developed online store, designed and implemented business logic, and created a script for product catalog loading, demonstrating proficiency in web development.
+- С#, ASP.NET Core, Razor
+- EF Core, MSSQL Server database
+- HTML, CSS, Bootstrap
 - The Git / GitHub version control system.
-- MSSQL Server database
-- HTML, CSS, Bootstrap, RAZOR
 - Created docker container docker pull iakovlevanatalia/onlineshopwebapp
-- Implemented the design pattern Model-View-Controller
 - Used dependency injection
-- Partial Views
 - Data validation on the client side, data validation on the server. Display errors and tips.
-- Logging. Serilog Library.
-- Modal windows.
-- Migration
+- Serilog Library.
+- Database Migration
 - Telegrambot. Reports users about changing order status, sends out special offers. Telegram Bot integration using RabbitMQ.    
 - RABBIT MQ. Interacts between TelegramBot and OnlineShopWebApp. Stores messages in the database.
  
-The application is divided into areas:
-- Order. Implemented the ability to place an order.
-- Cart. Added the ability to increase and decrease each position's quantity. The quantity of goods in the cart is displayed next to the cart's icon. A form has been implemented to complete the purchase. All data is validated, with errors and hints displayed.
-- Product. Possibility to add goods to cart and favorites.
-- User. Implemented a user authorization/registration form. User can add image. All data is validated, with errors and hints displayed.
-- Administrator. The administrator can check all orders, all users, roles and access rights, a list of goods on sale. The administrator can add/change/delete the product name, price, description, image of goods. All data is validated, with errors and hints displayed. The administrator can issue roles (access-rights). Administrator can change order status. 
+The application features the following areas:
+- Order: Implemented the functionality to place orders.
+- Cart: Enhanced the cart with the ability to adjust item quantities. The cart icon displays the total goods quantity, and a form ensures seamless purchases with data validation and error prompts.
+- Product: Enabled users to add items to both the cart and favorites.
+- User: Developed a user authorization/registration form, allowing users to upload images. Implemented robust data validation.
+- Administrator: Empowered administrators to oversee orders, users, roles, access rights, and a list of available products. Administrators can modify product details, including name, price, description, and image. Thorough data validation with error prompts is integrated. The administrator has the authority to assign roles, manage access rights, and alter order statuses.
